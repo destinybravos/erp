@@ -318,12 +318,12 @@
                             $bname = $_POST['bname'];
                             $Aname = $_POST['Aname'];
                             $cont = $_POST['cont'];
-                            $skin = $_POST['skin'];
+                            // $skin = $_POST['skin'];
 
                             // connect
                             $conn2 = new MySqli('localhost','root','','project2021_erp');
 
-                            $query2 = $conn2->query('INSERT INTO branch (branch_name, branch_address, branch_contact, skin) VALUES("'. $bname .'","'. $Aname .'","'. $cont .'","'. $skin .'")') or die($conn->error);
+                            $query2 = $conn2->query('INSERT INTO branch (branch_name, branch_address, branch_contact) VALUES("'. $bname .'","'. $Aname .'","'. $cont .'")') or die($conn->error);
                         ?>
                             <script>
                                 alert('Branch Added Successfully')
@@ -356,14 +356,14 @@
                         </div>
                         <input type="text" required name="Aname" id="" placeholder="Enter Branch Address" class="form-control">
                     </div>
-                    <div class="input-group my-3">
+                    <!-- <div class="input-group my-3">
                         <div class="input-group-prepend">
                             <span class="btn btn-warning">
                                 <i class="fa fa-warehouse"></i>
                             </span>
                         </div>
                         <input type="text" required name="skin" id="" placeholder="Enter Branch Skin" class="form-control">
-                    </div>
+                    </div> -->
                     
                     <div class="form-group">
                         <button class="btn btn-dark btn-block btn-submit" type="submit" name="addB">

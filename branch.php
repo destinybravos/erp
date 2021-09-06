@@ -53,7 +53,7 @@ include_once "side_nav.php";
                         <th>Fullname</th>
                         <th>Contact</th>
                         <th>Branch Address</th>
-                        <th>Skin</th>
+                        <!-- <th>Skin</th> -->
                         <th>Call</th>
                     </tr>
                     <?php 
@@ -66,7 +66,7 @@ include_once "side_nav.php";
                                 <td><?php echo $venData['branch_name'] ?></td>
                                 <td><?php echo $venData['branch_contact']; ?></td>
                                 <td><?php echo $venData['branch_address'];; ?></td>
-                                <td><?php echo $venData['skin']; ?></td>
+                                <!-- <td><?php //echo $venData['skin']; ?></td> -->
                                 <td>
                                     <a href="tel:<?php echo $venData['phone']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i></button>
                                 </td>
