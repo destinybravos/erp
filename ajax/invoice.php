@@ -141,7 +141,7 @@ if($sqlQuery->num_rows > 0){
 
     <div class="row" style="margin:30px; text-align:right;">
         <div class="col-md" id="foot_btn">
-        <iframe src="http://localhost/webproject/erp_system/ajax/invoice.php?sale_id=<?php echo $sales_id ?>" style="display:none;" name="frame"></iframe>
+        <iframe src="http://localhost/erp/ajax/invoice.php?sale_id=<?php echo $sales_id ?>" style="display:none;" name="frame"></iframe>
             <a href="#" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close </a>
             <a class="btn btn-success btn-sm" style="color:white;" onclick="frames['frame'].print()"><i class="fa fa-print"></i> Print Invoice </a>
         </div>
