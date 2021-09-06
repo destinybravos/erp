@@ -1,0 +1,36 @@
+.side_nav{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    overflow: auto;
+    width: 250px;
+    background-color: rgb(29, 27, 27);
+    z-index: 1 !important;
+}
+#side_menu{
+    width: 100%;
+    margin: 0;
+}
+.list{
+    width: 100%;
+}
+.list a{
+    display: block;
+    padding:8px 0 8px 20px;
+    color:white;
+}
+.list a:hover{
+    text-decoration: none;
+    background-color: black;
+}
+.sub_menu{
+    display: none;
+    background-color: black;
+}
+.sub_menu a{
+    padding-left: 40px;
+}
+
+.sub_menu li a:hover{
+    background-color: rgb(19, 17, 17);
+}

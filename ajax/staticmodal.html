@@ -1,0 +1,51 @@
+
+	<!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-md modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<form id="check">
+			  <div class="modal-header">
+				<h5 class="modal-title text-capitalize" id="staticBackdropLabel">Authentication Require</h5>
+			  
+			  </div>
+			  <div class="modal-body">
+				<div class="alert alert-danger py-2 hidden alert-d" id="">
+				  <p class="text-danger mb-0 py-0">incorrect access code</p>
+				</div>
+				<div class="form-group">
+				  <label for="text">Enter your secret access code</label>
+				  <input type="password" class="form-control" id="access_code" placeholder="Enter Access Code">
+				</div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Authenticate</button>
+			  </div>
+			</form>
+			  
+		  </div>
+		</div>
+	  </div>
+
+
+<script>
+    if (localStorage.access == null || localStorage.access == '') {
+        // $('#staticBackdrop').modal('show');
+        $('#check').submit(function (e) { 
+            e.preventDefault();
+                let access_code = $('#access_code').val();
+                let code  = '12345';
+            if (access_code != code) {
+                $('.alert-d').removeClass('hidden');
+            }else{
+                if (access_code == code) {
+                    localStorage.access = access_code;
+                    $('#staticBackdrop').modal('hide');
+                }
+            }
+        });
+    }
+
+    // if(localStorage.access != null || localStorage.access != ''){
+    //     localStorage.removeItem('access');
+    // }
+</script>
