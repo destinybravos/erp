@@ -87,6 +87,36 @@ include_once "side_nav.php";
             </div>
             <!-- End of Column md-9 -->
     </div>
+
+    
+<!-- Modal -->
+<div class="modal fade" id="alert_modal_product_edit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body" id="" style="padding:30px auto; text-align:center;">
+        <h1 id="alertMsgIcon"></h1>
+        <span id="alertMsgSpan"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="alert_modal_product_delete" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body" id="" style="padding:30px auto; text-align:center;">
+        <h1 id="alertMsgIcon"></h1>
+        <span id="alertMsgSpan"></span>
+        <span class="d-none" id="product_id_span"></span>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger btn-sm" id="cornfirm_delete_product">YES! Delete Product</button>
+      </div>
+    </div>
+  </div>
+</div>
     
 </div>
 
@@ -96,6 +126,25 @@ include_once "side_nav.php";
     <script src="plugs/DataTables/datatables.min.js"></script>
     <script src="js/main_ext.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        $('.action_btn').on('click', '.btn-danger', function () {
+            $id = $(this).parent('td').attr('id');
+            $.ajax({
+                type:'post',
+                data: {product_id: $id, action:'delete_product'},
+                url: 'ajax/query_manager.php',
+                success:function(data){
+                    if(data == 1){
+                        alert('Product deleted successfully');
+                        window.location.reload();
+                    }else{
+                        alert('Something went wrong and could not delete product');
+                    }
+                }
+            })
+        })
+    </script>
     
 </body>
 </html>
