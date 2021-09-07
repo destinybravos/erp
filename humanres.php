@@ -68,7 +68,23 @@ include_once "side_nav.php";
                                 <td><?php echo $venData['email'];; ?></td>
                                 <td><?php echo $venData['designation']; ?></td>
                                 <td>
-                                    <a href="tel:<?php echo $venData['phone']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i></button>
+                                    <a href="tel:<?php echo $venData['phone']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i>
+                                    <a class="btn btn-sm btn-info text-center text-light mx-2"><i class="fa fa-edit"></i></a>
+                                    <form method="post" class="d-inline-block">
+                                        <?php 
+                                            $del = 'del'.$venData['id'];
+                                            $NID = $venData['id'];
+                                            if(isset($_POST[$del])){
+                                                $queryCheck = $conn->query("DELETE FROM `users` WHERE id = '$NID'");
+                                                ?>
+                                                    <script>
+                                                        location.reload();
+                                                    </script>
+                                                <?php
+                                            }
+                                        ?>
+                                        <button type="submit" name="<?php echo $del ?>" class="btn btn-sm btn-danger text-light"><i class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php

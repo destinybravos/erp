@@ -172,6 +172,68 @@
   </div>
 </div>
 
+<!-- EDIT MODAL -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="product_detailsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="product_detailsLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    <?php 
+                        if(isset($_POST['upDat'])){
+                            $bname = $_POST['bname'];
+                            $Aname = $_POST['Aname'];
+                            $cont = $_POST['cont'];
+                            $conn2 = new MySqli('localhost','root','','project2021_erp');
+
+                            $query2 = $conn2->query('INSERT INTO branch (branch_name, branch_address, branch_contact) VALUES("'. $bname .'","'. $Aname .'","'. $cont .'")') or die($conn->error);
+                        ?>
+                            <script>
+                                alert('Branch Added Successfully')
+                                $('form[name=addBranch]').reset();
+                            </script>
+                        <?php
+                        }
+                    ?>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="bname" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="cont" id="" placeholder="Enter Branch Contact" class="form-control">
+                    </div>
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="Aname" id="" placeholder="Enter Branch Address" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="upDat" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="alert_modal_12" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
