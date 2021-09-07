@@ -69,7 +69,7 @@ include_once "side_nav.php";
                                 <!-- <td><?php //echo $venData['skin']; ?></td> -->
                                 <td>
                                     <a href="tel:<?php echo $venData['phone']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i>
-                                    <a class="btn btn-sm btn-info text-center text-light mx-2" id="edit" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-info text-center text-light mx-2 edit_branch" title="<?php echo $venData['branch_id'];?>"  id="edit" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></a>
                                     <form method="post" class="d-inline-block">
                                         <?php 
                                             $del = 'del'.$venData['branch_id'];
@@ -101,6 +101,23 @@ include_once "side_nav.php";
     </div>
 </div>
 </div>
-    
+    <script>
+        $('.edit_branch').on('click', function () {
+            // alert(this.id)
+            $.ajax({
+                type: "post",
+                url: "ajax/query_manager.php",
+                data: {action:'edit_branch', data:this.title},
+                dataType: "json",
+                success: function (res) {
+                    console.log(res);
+                    $('.edit_modal .input-group input[name=bname]').val(res.branch_name)
+                    $('.edit_modal .input-group input[name=cont]').val(res.branch_contact)
+                    $('.edit_modal .input-group input[name=Aname]').val(res.branch_address)
+                    $('.edit_modal .input-group input[name=my_id]').val(res.branch_id)
+                }
+            });
+        });
+    </script>
 </body>
 </html>

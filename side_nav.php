@@ -172,7 +172,7 @@
   </div>
 </div>
 
-<!-- EDIT MODAL -->
+<!-- EDIT BRANCH MODAL -->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="product_detailsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -183,23 +183,26 @@
                 </button>
             </div>
             <form method="post">
-                <div class="modal-body">
+                <div class="modal-body edit_modal">
                     <?php 
                         if(isset($_POST['upDat'])){
                             $bname = $_POST['bname'];
                             $Aname = $_POST['Aname'];
                             $cont = $_POST['cont'];
+                            $my_id = $_POST['my_id'];
                             $conn2 = new MySqli('localhost','root','','project2021_erp');
 
-                            $query2 = $conn2->query('INSERT INTO branch (branch_name, branch_address, branch_contact) VALUES("'. $bname .'","'. $Aname .'","'. $cont .'")') or die($conn->error);
+                            $query2 = $conn2->query("UPDATE branch SET branch_name='$bname', branch_address='$Aname', branch_contact='$cont' WHERE branch_id='$my_id'") or die($conn->error);
                         ?>
                             <script>
-                                alert('Branch Added Successfully')
-                                $('form[name=addBranch]').reset();
+                                alert('Branch Updated Successfully')
                             </script>
                         <?php
                         }
                     ?>
+                    <div class="input-group">
+                        <input type="hidden" required name="my_id">
+                    </div>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="btn btn-warning">
@@ -228,6 +231,89 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="upDat" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- EDIT USER MODAL -->
+<div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="product_detailsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="product_detailsLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post">
+                <div class="modal-body edit_user_modal">
+                    <?php 
+                        if(isset($_POST['upDatUser'])){
+                            $fname = $_POST['fname'];
+                            $lname = $_POST['lname'];
+                            $role = $_POST['role'];
+                            $mail = $_POST['mail'];
+                            $cont = $_POST['cont'];
+                            $my_id2 = $_POST['my_id'];
+                            $conn2 = new MySqli('localhost','root','','project2021_erp');
+                            $query2 = $conn2->query("UPDATE users SET firstname='$fname', lastname='$lname', phone='$cont',email='$mail',designation='$role' WHERE id='$my_id2'") or die($conn->error);
+                        ?>
+                            <script>
+                                alert('Users Detail Updated Successfully')
+                            </script>
+                        <?php
+                        }
+                    ?>
+                    <div class="input-group">
+                        <input type="hidden" required name="my_id">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="fname" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="lname" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="cont" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="mail" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="role" id="" placeholder="Enter Branch Fullname" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="upDatUser" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>

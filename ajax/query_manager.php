@@ -14,6 +14,14 @@ if ($action == 'delete_product') {
     }else{
         echo 0;
     }
+}elseif ($action == 'edit_branch') {
+    $data = $_POST['data'];
+    $queryCheck = $conn->query("SELECT * FROM branch WHERE branch_id='$data'");
+    echo json_encode($queryCheck->fetch_assoc());
+}elseif ($action == 'edit_users') {
+    $data = $_POST['data'];
+    $queryCheck = $conn->query("SELECT * FROM users WHERE id='$data'");
+    echo json_encode($queryCheck->fetch_assoc());
 }
 
 

@@ -69,7 +69,7 @@ include_once "side_nav.php";
                                 <td><?php echo $venData['designation']; ?></td>
                                 <td>
                                     <a href="tel:<?php echo $venData['phone']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i>
-                                    <a class="btn btn-sm btn-info text-center text-light mx-2"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-info text-center text-light mx-2 edit_users" title="<?php echo $venData['id'];?>"  id="edit_user" data-toggle="modal" data-target="#edit_user"><i class="fa fa-edit"></i></a>
                                     <form method="post" class="d-inline-block">
                                         <?php 
                                             $del = 'del'.$venData['id'];
@@ -101,6 +101,25 @@ include_once "side_nav.php";
     </div>
 </div>
 </div>
-    
+    <script>
+        $('.edit_users').on('click', function () {
+            // alert(this.id)
+            $.ajax({
+                type: "post",
+                url: "ajax/query_manager.php",
+                data: {action:'edit_users', data:this.title},
+                dataType: "json",
+                success: function (res) {
+                    console.log(res);
+                    $('.edit_user_modal .input-group input[name=fname]').val(res.firstname)
+                    $('.edit_user_modal .input-group input[name=lname]').val(res.lastname)
+                    $('.edit_user_modal .input-group input[name=cont]').val(res.phone)
+                    $('.edit_user_modal .input-group input[name=mail]').val(res.email)
+                    $('.edit_user_modal .input-group input[name=role]').val(res.designation)
+                    $('.edit_user_modal .input-group input[name=my_id]').val(res.id)
+                }
+            });
+        });
+    </script>
 </body>
 </html>
