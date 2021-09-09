@@ -29,6 +29,12 @@ include_once "side_nav.php";
 <div style="max-width:100%; z-index:-1;">
 <div class="content">
     <div class="container">
+    <div class="my-4">
+        <div class="btn btn-primary" id="addVendor" data-toggle="modal" data-target="#addVendorModal">
+            <i class="fa fa-warehouse"></i>
+            Add Suplier
+        </div>
+    </div>
     <!-- End of First Row -->
 
     <div class="row" style="margin-top:40px;">
@@ -37,7 +43,7 @@ include_once "side_nav.php";
                 <div class="card-header">
                     <strong>
                         <i class="fa fa-industry "></i>
-                        Vendors List
+                        Suplier's List
                     </strong>
                 </div>
                 <div class="card-body">
@@ -63,8 +69,23 @@ include_once "side_nav.php";
                                 <td><?php echo $vendor; ?></td>
                                 <td><?php echo $venAddr; ?></td>
                                 <td><?php echo $venPhone; ?></td>
-                                <td>
-                                    <a href="tel:<?php echo $venPhone; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i></button>
+                                <td class="d-flex">
+                                    <a href="tel:<?php echo $venPhone; ?>" class="btn btn-sm btn-primary"><i class="fa fa-phone"></i></button> </a>
+                                    <form method="post" class="d-inline-block">
+                                        <?php 
+                                            $del = 'del'.$venData['supplier_id'];
+                                            $NID = $venData['supplier_id'];
+                                            if(isset($_POST[$del])){
+                                                $queryCheck = $conn->query("DELETE FROM `supplier` WHERE supplier_id = '$NID'");
+                                                ?>
+                                                    <script>
+                                                        location.href = '';
+                                                    </script>
+                                                <?php
+                                            }
+                                        ?>
+                                        <button type="submit" name="<?php echo $del ?>" class="btn btn-sm btn-danger text-light"><i class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php

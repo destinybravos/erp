@@ -455,7 +455,6 @@
 
 
 <!-- Add branch modal -->
-
 <div class="modal fade" id="addBranch" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -525,6 +524,68 @@
     </div>
 </div>
 
+
+<!-- Add branch modal -->
+<div class="modal fade" id="addVendorModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-5" id="invoiced" style="padding:0;">
+                <form method="post" name="addVendor">
+                    <?php 
+                        if(isset($_POST['addV'])){
+                            $bname = $_POST['vname'];
+                            $Aname = $_POST['vaddress'];
+                            $cont = $_POST['cont'];
+                            // $skin = $_POST['skin'];
+
+                            // connect
+                            $conn2 = new MySqli('localhost','root','','project2021_erp');
+
+                            $query2 = $conn2->query('INSERT INTO supplier (supplier_name, supplier_address, supplier_contact) VALUES("'. $bname .'","'. $Aname .'","'. $cont .'")') or die($conn->error);
+                        ?>
+                            <script>
+                                alert('Supplier Added Successfully')
+                                $('form[name=addVendor]').reset();
+                            </script>
+                        <?php
+                        }
+                    ?>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="vname" id="" placeholder="Enter Supplier's Name" class="form-control">
+                    </div>
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="cont" id="" placeholder="Enter Supplier's  Contact" class="form-control">
+                    </div>
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning">
+                                <i class="fa fa-warehouse"></i>
+                            </span>
+                        </div>
+                        <input type="text" required name="vaddress" id="" placeholder="Enter Supplier's Address" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-dark btn-block btn-submit" type="submit" name="addV">
+                            <i class="fa fa-sign-alt"></i>
+                            Add Supplier
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
  <!--~~~~~~~ Add user modal ~~~~~~-->
