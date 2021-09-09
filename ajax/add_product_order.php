@@ -17,7 +17,10 @@ if(!isset($_SESSION['ORDER_ID'])){
 
 $sqlQuery = $conn->query("SELECT * FROM order_cart WHERE order_id='". $order_id ."' AND item_id='".$product_id ."'");
 if($sqlQuery->num_rows > 0){
-    echo 2;    
+    $update = $conn->query("Update order_cart SET qty= qty + '" . $qty ."' WHERE order_id='". $order_id ."' AND item_id='".$product_id ."'");
+    $amount = number_format(getAmount($order_id, $conn));
+    $data = ['order_id'=>$order_id, 'amount'=>$amount];
+    echo json_encode($data);   
 }else{
     $getProductQuery = $conn->query("SELECT * FROM product WHERE prod_id='" . $product_id . "'");
     $data = $getProductQuery->fetch_assoc();

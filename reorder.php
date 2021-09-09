@@ -119,60 +119,6 @@ include_once "side_nav.php";
             </div>
             <!-- End of Column md-9 -->
 
-            <div class="row" style="margin-top:20px;">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>
-                            <i class="fab fa-jedi-order"></i>
-                            Order History
-                        </strong>
-                    </div>
-                    <div class="card-body">
-                    <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <th>SN</th>
-                            <th>Sales Made By</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                        </tr>
-                        <?php 
-                        $count = 1; 
-                            $queryCheck = $conn->query("SELECT * FROM sales ORDER BY date_added LIMIT 5");
-                            while($saleData = $queryCheck->fetch_assoc()){
-                                $customerID = $saleData['cust_id'];
-                                $salePersonID = $saleData['user_id'];
-                                $amount = $saleData['total'];
-                                $transdate = $saleData['date_added'];
-                            //  Fetch all neccessary data for invoice
-                                $custQuery = $conn->query("SELECT * FROM customer WHERE cust_id='". $customerID . "'");
-                                $staffQuery = $conn->query("SELECT * FROM users WHERE id='". $salePersonID . "'");                        
-                                // Strip some data into associative array
-                                $custData = $custQuery->fetch_assoc();
-                                $staffData = $staffQuery->fetch_assoc();
-                                ?>
-                                <tr>
-                                    <td><?php echo $count; ?></td>
-                                    <td><?php echo $staffData['firstname'] . " " . $staffData['lastname']; ?></td>
-                                    <td><?php echo $custData['cust_first'] . " " . $custData['cust_last']; ?></td>
-                                    <td> &#8358; <?php echo number_format($amount); ?> </td>
-                                </tr>
-                                <?php
-                                $count++;
-                            }
-                        ?>
-                        </tbody>
-                        </table>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="btn btn-sm btn-primary">View all Sales</button>
-                    </div>
-                </div>
-                <!-- End of Card -->
-            </div>
-</div>
 
 
     <script src="js/jquery-3.4.1.min.js"></script>

@@ -188,7 +188,7 @@ include_once "ajax/staticmodal.html";
                 </div>
 
                 <div class="card-footer">
-                    <button class="btn btn-sm btn-primary">View all Sales</button>
+                    <a href="sales_history.php" class="btn btn-sm btn-primary">View all Sales</a>
                 </div>
             </div>
         </div>

@@ -26,12 +26,12 @@
                     <a href="#">
                         <i class="fa fa-money-bill-wave"></i> Financial Planning
                     </a>
-                </li>
-                <li class="list">
-                    <a href="budget.php">
-                        <i class="fa fa-swatchbook"></i> budget Control
-                    </a>
                 </li> -->
+                <li class="list">
+                    <a href="sales_history.php">
+                        <i class="fa fa-swatchbook"></i> Recorded Sales
+                    </a>
+                </li>
                 <li class="list">
                     <a href="funds.php">
                         <i class="fa fa-undo-alt"></i> Funds Control
@@ -436,7 +436,7 @@
                         </select>
                     </div>
                     <div class="input-group my-2">
-                        <input type="text" required name="ser" id="" placeholder="Enter Product serial" class="form-control">
+                        <input type="text" name="ser" id="" placeholder="Enter Product serial" class="form-control">
                     </div>
                     <textarea name="desc" id="" cols="30" rows="10" class="form-control" placeholder="Enter product Description"></textarea>
                     
@@ -742,7 +742,7 @@
                             <strong>Customer Address: </strong> <br />
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" type="text" name="address" id="" required>
+                                    <input class="form-control" type="text" name="address" id="">
                                 </div>
                             </div>
                         </td>
@@ -761,7 +761,7 @@
                             <strong>Customer Email Address: </strong> <br />
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input class="form-control" type="email" name="email" id="" required>
+                                    <input class="form-control" type="email" name="email" id="">
                                 </div>
                             </div>
                         </td>
@@ -791,7 +791,7 @@
       <div class="modal-footer">
         <input type="hidden" name="sales_id">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary save_sales">Save changes</button>
+        <button type="submit" class="btn btn-primary save_sales">Save Invoice</button>
       </div>
       </form>
     </div>

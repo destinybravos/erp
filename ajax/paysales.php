@@ -174,7 +174,8 @@ if($sqlQuery->num_rows > 0){
 <div class="container" style="padding:1px; margin-top:80px;">
     <div class="row">
         <div class="col-md-12">
-            <h4>An Error Occured while trying to view invoice. Please view it from the sales history module!</h4>
+            <h4 class="my-4 px-4">You can not view the payment details from this module! Please view it from the sales history module!</h4>
+            <a href="sales_history.php" class="btn btn-primary mb-4 mx-4">View Sales History</a>
         </div>
     </div>
 </div>

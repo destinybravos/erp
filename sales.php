@@ -51,7 +51,7 @@ include_once "side_nav.php";
                              $queryCheck = $conn->query("SELECT * FROM product ORDER BY prod_name ASC");
                              $count = 1;
                         ?>
-                        <div class="table-responsive-sm text-nowrap"  style="width:100%; max-heigth:100px; overflow:scrollY;">
+                        <div class="table-responsive-sm text-nowrap"  style="width:100%; max-height:100px; overflow:scrollY;">
                             <table id="pro_table" data-order='[[ 0, "asc" ]]' data-page-length='10' class="table table-hover table-striped table-sm pro_content" >
                                 <thead>
                                     <tr>

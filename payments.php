@@ -60,7 +60,7 @@ include_once "side_nav.php";
                             $payment_type = $payData['payment_type'];
                             $payment_date = $payData['payment_date'];
                             ?>
-                            <tr id="<?php echo $payData['payment_id']; ?>" style="cursor:pointer;">
+                            <tr id="<?php echo $payData['sales_id']; ?>" style="cursor:pointer;" class="btn-view_sale">
                                 <td><?php echo $count; ?></td>
                                 <td><?php echo $payment; ?></td>
                                 <td>&#8358; <?php echo number_format($amtt); ?></td>
@@ -69,13 +69,13 @@ include_once "side_nav.php";
                                 <?php if($payData['payment_type'] == "Sales"){
                                 ?>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-arrow-alt-circle-down"></i></button>
+                                    <a href="#" class="btn btn-sm btn-default"><i class="fa fa-check-circle text-success"></i></a>
                                 </td>
                                 <?php
                                 }else{
                                 ?>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-arrow-alt-circle-up"></i></button>
+                                    <a href="#" class="btn btn-sm btn-default"><i class="fa fa-times-circle text-danger"></i></a>
                                 </td>
                                 <?php
                                 }

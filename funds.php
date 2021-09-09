@@ -32,45 +32,8 @@ include_once "side_nav.php";
     <!-- End of First Row -->
 
     <div class="row" style="margin-top:40px;">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <strong>
-                        <i class="fa fa-clipboard-list "></i>
-                        Available Budget
-                    </strong>
-                </div>
-                <div class="card-body" style="padding:0;">
-                <table class="table table-striped">
-                <tbody>
-                    <tr>
-                        <th>SN</th>
-                        <th>Budget</th>
-                        <th>Amount</th>
-                    </tr>
-                    <?php 
-                    $count = 1; 
-                        $queryCheck = $conn->query("SELECT * FROM budget ORDER BY date_added");
-                        while($budData = $queryCheck->fetch_assoc()){
-                            ?>
-                            <tr>
-                                <td><?php echo $count; ?></td>
-                                <td><?php echo $budData['budget']; ?></td>
-                                <td>&#8358; <?php echo number_format($budData['amount']); ?></td>
-                            </tr>
-                            <?php
-                            $count++;
-                            }
-                    ?>
-                    </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    <!-- End of Second Row -->
 
-
-    <div class="col-md-6">
+    <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong>
