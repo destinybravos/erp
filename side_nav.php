@@ -393,14 +393,14 @@
                     <div class="input-group my-2">
                         <select name="Cat" id="" class="form-control">
                             <option selected disabled>Choose Category Type</option>
-                            <?php 
-                                $queryCheck = $conn->query("SELECT * FROM category");
-                                while($data = $queryCheck->fetch_assoc()){
-                                    ?>
-                                        <option value="<?php echo $data['cat_id']?>"><?php echo $data['cat_name']?></option>
-                                    <?php
-                                }
-                            ?>
+                            <option value="Bakery">Bakery</option>
+                            <option value="Bear">Bear</option>
+                            <option value="Beverage">Beverage</option>
+                            <option value="Cream/Lotion">Cream/Lotion</option>
+                            <option value="Cosmetics">Cosmetics</option>
+                            <option value="Soaps">Soaps</option>
+                            <option value="Soft Drinks">Soft Drinks</option>
+                            <option value="Wine">Wine</option>
                         </select>
                     </div>
                     <div class="my-2">
